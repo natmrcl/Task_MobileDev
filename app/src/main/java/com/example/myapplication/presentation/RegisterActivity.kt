@@ -2,6 +2,7 @@ package com.example.myapplication.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.R
 import com.example.myapplication.data.User
@@ -20,18 +21,20 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(viewBinding.root)
         vm = ViewModelProvider(this)[ViewModel::class.java]
 
-//        vm.addUser(User(0, "COdebot", "Email.com"))
         viewBinding.btnRegister.setOnClickListener{
             val uname = viewBinding.etUname.text.toString()
             val pass = viewBinding.etPassword.text.toString()
 
             vm.addUser(User(0,uname,pass))
+
+            viewBinding.etUname.text.clear()
+            viewBinding.etPassword.text.clear()
+
+            showMessage("Registration successful! Try to login")
         }
+    }
 
-//        vm.allUsers.observe(this) {
-//            viewBinding.txtHello.text = it[0].username
-//        }
-
-
+    private fun showMessage(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

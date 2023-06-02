@@ -1,9 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
     tools:context=".presentation.HomepageActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="230dp"
+            android:layout_height="246dp"
+            android:contentDescription="@string/wlc"
+            android:src="@drawable/photo" />
+        <ImageView
+            android:layout_width="230dp"
+            android:layout_height="246dp"
+            android:contentDescription="@string/wlc"
+            android:src="@drawable/text" />
+
+        <Button
+            android:id="@+id/exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/babyblue"
+            android:text="Exit" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

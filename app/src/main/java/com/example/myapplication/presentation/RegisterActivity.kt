@@ -22,18 +22,26 @@ class RegisterActivity : AppCompatActivity() {
         vm = ViewModelProvider(this)[ViewModel::class.java]
 
         viewBinding.btnRegister.setOnClickListener{
-            val uname = viewBinding.etUname.text.toString()
-            val pass = viewBinding.etPassword.text.toString()
-
-            vm.addUser(User(0,uname,pass))
-
-            viewBinding.etUname.text.clear()
-            viewBinding.etPassword.text.clear()
-
-            showMessage("Registration successful! Try to login")
+            regis()
         }
     }
 
+    private fun regis(){
+        val uname = viewBinding.etUname.text.toString()
+        val pass = viewBinding.etPassword.text.toString()
+        val cfpass = viewBinding.etCfPassword.text.toString()
+
+       if (pass == cfpass){
+           vm.addUser(User(0,uname,pass))
+           viewBinding.etUname.text.clear()
+           viewBinding.etPassword.text.clear()
+           viewBinding.etCfPassword.text.clear()
+           showMessage("Registration successful! Try to login")
+       }else {
+           showMessage("Please enter the same password")
+       }
+
+    }
     private fun showMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }

@@ -24,19 +24,19 @@ class LoginActivity : AppCompatActivity() {
         viewBinding.btnLogin.setOnClickListener{
             val uname = viewBinding.etUname.text.toString()
             val pass = viewBinding.etPassword.text.toString()
-            Login(uname,pass)
+            login(uname,pass)
 
         }
     }
 
-    private fun Login(username: String, password: String) {
+    private fun login(username: String, password: String) {
         lifecycleScope.launch {
             val user = vm.checkUser(username, password)
             if (user != null) {
-                showMessage("Login berhasil")
+                showMessage("Login successful!")
                 navigateToHome()
             } else {
-                showMessage("Login Gagal")
+                showMessage("Login failed. Invalid credentials!")
             }
         }
     }
